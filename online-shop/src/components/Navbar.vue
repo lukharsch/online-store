@@ -58,12 +58,7 @@
                             {{ item.icon }}
                         </v-icon>
                     </v-list-item-icon>
-                    <v-badge
-                        color="green"
-                        content="6"
-                    >
-                        {{ item.title }}
-                    </v-badge>
+                    {{ item.title }}
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
@@ -79,6 +74,7 @@
                 drawer: false,
                 items: [
                     { title: 'Home', link: '/', icon: 'fa-home' },
+                    { title: 'Über mich', link: '/about', icon: 'fa-user' },
                     { title: 'Store', link: '/store', icon: 'fa-shopping-basket' },
                     { title: 'Warenkorb', link: '/cart', icon: 'fa-shopping-cart' },
                 ]

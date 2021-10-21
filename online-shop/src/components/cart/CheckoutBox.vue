@@ -9,7 +9,7 @@
             <v-card-text>
                 <v-text-field label="Name" />
                 <v-text-field label="E-Mail" />
-                <p>{{ getTotalPrice }}</p>
+                <p>Gesamt: {{ this.$store.getters.totalAmountCart }}€</p>
                 <v-btn
                     color="primary"
                     @click="goToCheckout"
@@ -43,13 +43,7 @@
             }
         },
         computed: {
-            getTotalPrice() {
-                var total = 0
-                this.$store.state.cart.forEach(element => {
-                    total += element.quantity * this.$store.state.products[element.itemId].price
-                });
-                return "Gesamt: " + total + "€"
-            }
+            
         }
     }
 </script>

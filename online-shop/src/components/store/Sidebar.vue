@@ -6,6 +6,31 @@
             class="px-8"
         >
             <h2 class="py-4">Filter</h2>
+            <v-row>
+                <v-col cols="12" class="pa-0">
+                    <v-subheader class="pl-0">
+                        Preis bis:
+                    </v-subheader>
+                    <v-slider
+                        v-model="slider"
+                        :max="maxPrice"
+                        :min="minPrice"
+                        thumb-color="red"
+                        thumb-label="true"
+                    >
+                        <template v-slot:prepend>
+                            <span class="pt-1">
+                                1.99
+                            </span>
+                        </template>
+                        <template v-slot:append>
+                            <span class="pt-1">
+                                200
+                            </span>
+                        </template>
+                    </v-slider>
+                </v-col>
+            </v-row>
             <v-radio-group
                 v-model="priceFilter"
                 :mandatory="true"
@@ -57,7 +82,16 @@
                     "Über 100€",
                 ],
                 priceFilter: 0,
-                checkbox: true
+                checkbox: true,
+                slider: 10
+            }
+        },
+        computed: {
+            minPrice() {
+                return 0
+            },
+            maxPrice() {
+                return 100
             }
         },
         components: {

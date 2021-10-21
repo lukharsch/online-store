@@ -15,6 +15,17 @@
                     Ideen aus Stoff
                 </h1>
             </v-row>
+            <v-row
+                align="center"
+                justify="center"
+            >
+                <h1 class="text-center font-italic subtitle-3 hidden-xs-only">
+                    Von Siggi Bannach
+                </h1>
+                <h3 class="text-center font-italic subtitle-3 hidden-sm-and-up">
+                    Von Siggi Bannach
+                </h3>
+            </v-row>
         </v-container>
     </v-parallax>
 </template>

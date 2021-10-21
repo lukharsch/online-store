@@ -8,6 +8,7 @@
                 lg="4"
                 offset-lg="3"
             >
+                <h3 class="mb-4">Warenkorb</h3>
                 <ProductList/>
             </v-col>
             <v-col

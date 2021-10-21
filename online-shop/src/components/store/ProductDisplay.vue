@@ -28,7 +28,7 @@
                 this.$store.commit('addItemToCart', { itemId: index, quantity })
                 console.log(this.$store.state.cart)
                 var message = this.$store.state.products[index].name + " wurde dem Warenkorb hinzugefügt"
-                this.$store.commit('updateSnackbar', { message: message, show: true })
+                this.$store.commit('updateSnackbar', { message: message, variant: "success", show: true })
             }
         }
     }

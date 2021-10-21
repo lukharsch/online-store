@@ -12,11 +12,18 @@
                     height="120px"
                 />
             </div>
-            <div class="d-flex flex-column justify-center">
-                <v-card-title>
-                    {{ productName }}
+            <div class="d-flex flex-column justify-center" style="width:100%">
+                <v-card-title class="py-0">
+                    {{ product.name }}
                 </v-card-title>
-                <v-card-subtitle>
+                <v-text-field
+                    v-model="quantity"
+                    hide-details
+                    label="Anzahl"
+                    class="pa-4"
+                    type="number"
+                />
+                <v-card-subtitle class="pt-0">
                     {{ item.quantity }} &#10005; {{ product.price }} € = {{ total }}
                 </v-card-subtitle>
                 <v-btn
@@ -24,6 +31,7 @@
                     outlined
                     small
                     class="mx-4"
+                    @click="removeItemFromCart(index = i)"
                 >
                     <v-icon
                         small
@@ -43,21 +51,37 @@
         name: "HorizontalCard",
         props: {
             item: Object,
-            updateCart: Function,
-            btnAction: String,
+            removeItemFromCart: Function,
             i: Number
+        },
+        data() {
+            return {
+                numberValue: 1
+            }
         },
         computed: {
             product() {
-                console.log("hi")
-                console.log(this.item.itemId)
                 return this.$store.state.products[this.item.itemId]
             },
-            productName() {
-                return this.item.quantity > 1 ? this.product.name + " (Anzahl: " + this.item.quantity +")" : this.product.name
-            },
+            //productName() {
+                //return this.item.quantity > 1 ? this.product.name + " (Anzahl: " + this.item.quantity +")" : this.product.name
+            //},
             total() {
-                return this.item.quantity * this.product.price + "€"
+                return (this.$store.state.cart[this.i].quantity * this.product.price).toFixed(2) + "€"
+            },
+            quantity: {
+                set(value) {
+                    this.$store.commit('updateCart', { id: this.i, quantity: value })
+                },
+                get() {
+                    if(this.$store.state.cart[this.i]) {
+                        return this.$store.state.cart[this.i].quantity
+                    } else {
+                        /*this.$destroy();
+                        this.$el.parentNode.removeChild(this.$el);*/
+                        return 0
+                    }
+                }
             }
         }
     }
