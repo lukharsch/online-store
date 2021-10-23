@@ -32,6 +32,9 @@
             //Header,
             AboutMe,
             Location
+        },
+        created () {
+            document.title = "Über";
         }
     }
 </script>

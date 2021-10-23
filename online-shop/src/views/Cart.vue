@@ -30,6 +30,9 @@
         components: {
             CheckoutBox,
             ProductList
+        },
+        created () {
+            document.title = "Warenkorb";
         }
     }
 </script>

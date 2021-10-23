@@ -42,6 +42,13 @@ export default new Vuex.Store({
                 mapDays.push({"day": element, "hours": temp[i]})
             });
             return mapDays
+        },
+        getTotalItemsInCart: state => {
+            var total = 0
+            state.cart.forEach(element => {
+                total += parseInt(element.quantity)
+            });
+            return total
         }
         /*getMinPrice: state => {
             var temp = state.products.sort(function (a, b) {

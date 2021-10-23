@@ -25,6 +25,7 @@
                             <h2>
                                 Ideen aus Stoff
                                 <v-btn
+                                    v-if="this.$route.name !== 'About'"
                                     to="/about"
                                     color="primary"
                                     small
@@ -90,12 +91,12 @@
                                                 <v-list-item-title
                                                     v-if="op['hours'] != ''"
                                                 >
-                                                    {{ op["day"] }}: {{ op["hours"] }}
+                                                    {{ op["day"] }}: <span class="float-right">{{ op["hours"] }}</span>
                                                 </v-list-item-title>
                                                 <v-list-item-title
                                                     v-else
                                                 >
-                                                    {{ op["day"] }}: Geschlossen
+                                                    {{ op["day"] }}: <span class="float-right">Geschlossen</span>
                                                 </v-list-item-title>
                                             </v-list-item>
                                         </v-list>
@@ -111,7 +112,7 @@
                                     cols="12"
                                     md="6"
                                 >
-                                    <l-map style="height: 300px" :zoom="zoom" :center="location">
+                                    <l-map style="height: 300px; z-index: 0" :zoom="zoom" :center="location">
                                         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                                         <l-marker :lat-lng="location"></l-marker>
                                     </l-map>

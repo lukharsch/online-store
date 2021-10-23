@@ -7,7 +7,7 @@
 
             <v-spacer></v-spacer>
 
-            <div class="hidden-md-and-up">
+            <div class="hidden-sm-and-up">
                 <v-btn
                     @click.stop="drawer = !drawer"
                 >
@@ -20,7 +20,7 @@
                 </v-btn>
             </div>
 
-            <v-toolbar-items class="hidden-sm-and-down">
+            <v-toolbar-items class="hidden-xs-only">
                 <v-btn
                     v-for="item in items"
                     :key="item.title"
@@ -34,6 +34,37 @@
                         {{ item.icon }}
                     </v-icon>
                     {{ item.title }}
+                </v-btn>
+                <v-btn
+                    v-if="this.$store.getters.getTotalItemsInCart > 0"
+                    to="/cart"
+                    text
+                >
+                    <v-badge
+                        color="success"
+                        :content="this.$store.getters.getTotalItemsInCart"
+                    >
+                        <v-icon
+                            small
+                            left
+                        >
+                            fa-shopping-cart
+                        </v-icon>
+                        Warenkorb
+                    </v-badge>
+                </v-btn>
+                <v-btn
+                    v-else
+                    to="/cart"
+                    text
+                >
+                    <v-icon
+                        small
+                        left
+                    >
+                        fa-shopping-cart
+                    </v-icon>
+                    Warenkorb
                 </v-btn>
             </v-toolbar-items>
         </v-app-bar>
@@ -60,6 +91,20 @@
                     </v-list-item-icon>
                     {{ item.title }}
                 </v-list-item>
+                <v-list-item
+                    to="/cart"
+                    link
+                >
+                    <v-list-item-icon>
+                        <v-icon
+                            small
+                            left
+                        >
+                            fa-shopping-cart
+                        </v-icon>
+                    </v-list-item-icon>
+                    Warenkorb
+                </v-list-item>
             </v-list>
         </v-navigation-drawer>
     </div>
@@ -74,9 +119,8 @@
                 drawer: false,
                 items: [
                     { title: 'Home', link: '/', icon: 'fa-home' },
-                    { title: 'Über mich', link: '/about', icon: 'fa-user' },
-                    { title: 'Store', link: '/store', icon: 'fa-shopping-basket' },
-                    { title: 'Warenkorb', link: '/cart', icon: 'fa-shopping-cart' },
+                    { title: 'Über', link: '/about', icon: 'fa-user' },
+                    { title: 'Store', link: '/store', icon: 'fa-shopping-basket' }
                 ]
             }
         }

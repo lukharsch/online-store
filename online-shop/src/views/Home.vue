@@ -20,6 +20,9 @@
             Header,
             PopularProducts,
             Location
+        },
+        created () {
+            document.title = "Ideen aus Stoff";
         }
     }
 </script>

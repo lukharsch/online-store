@@ -26,6 +26,9 @@
         components: {
             Sidebar,
             ProductDisplay
+        },
+        created () {
+            document.title = "Store";
         }
     }
 </script>
