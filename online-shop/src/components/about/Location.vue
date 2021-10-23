@@ -12,8 +12,16 @@
                 <v-card
                     elevation="6"
                 >
-                    <v-row class="pa-4 pb-1">
-                        <v-col class="py-0 mb-0">
+                    <v-row 
+                        class="pa-4 pb-2"
+                        justify="space-between"
+                    >
+                        <v-col 
+                            class="py-0 mb-0"
+                            cols="12"
+                            md="6"
+                            align-self="center"
+                        >
                             <h2>
                                 Ideen aus Stoff
                                 <v-btn
@@ -25,13 +33,35 @@
                                     Mehr Info
                                 </v-btn>
                             </h2>
-                        </v-col>
-                    </v-row>
-                    <v-row class="px-4 py-0 my-0">
-                        <v-col class="py-0 my-0">
                             <h4 class="subtitle-1">
                                 Von {{ this.$store.state.storeInfo.merchant }}
                             </h4>
+                        </v-col>
+                        <v-col 
+                            class="py-0 mb-0"
+                            cols="12"
+                            md="auto"
+                            align-self="center"
+                        >
+                            <p
+                                v-if="this.$store.getters.openedToday != ''"
+                                class="success--text mb-0 pb-0"
+                            >
+                                Heute geöffnet: {{ this.$store.getters.openedToday }}
+                            </p>
+                            <p
+                                v-else
+                                class="error--text mb-0 pb-0"
+                            >
+                                Heute geschlossen
+                            </p>
+                            <v-row justify="end">
+                                <v-col
+                                    align-self="center"
+                                >
+                                    Weitere Öffnungszeiten
+                                </v-col>
+                            </v-row>
                         </v-col>
                     </v-row>
                     <v-row class="px-4 my-0">

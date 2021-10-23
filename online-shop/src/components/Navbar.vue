@@ -2,12 +2,12 @@
     <div>
         <v-app-bar style="z-index: 1">
             <v-toolbar-title>
-                Ideen aus Stoff
+                {{ this.$store.state.storeInfo.storeName }}
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
 
-            <div class="hidden-sm-and-up">
+            <div class="hidden-md-and-up">
                 <v-btn
                     @click.stop="drawer = !drawer"
                 >
@@ -20,7 +20,7 @@
                 </v-btn>
             </div>
 
-            <v-toolbar-items class="hidden-xs-only">
+            <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn
                     v-for="item in items"
                     :key="item.title"

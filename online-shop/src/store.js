@@ -25,6 +25,12 @@ export default new Vuex.Store({
               
             return total.toFixed(2)
         },
+        openedToday: state => {
+            var dt = new Date();
+            var hm = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+            var day = hm[dt.getDay()]
+            return state.storeInfo.opening[day] != null ? state.storeInfo.opening[day] : ""
+        },
         /*getMinPrice: state => {
             var temp = state.products.sort(function (a, b) {
                 return a.price - b.price

@@ -9,10 +9,10 @@
                 justify="center"
             >
                 <h1 class="text-center display-3 hidden-xs-only">
-                    Ideen aus Stoff
+                    {{ this.$store.state.storeInfo.storeName }}
                 </h1>
                 <h1 class="text-center display-1 hidden-sm-and-up">
-                    Ideen aus Stoff
+                    {{ this.$store.state.storeInfo.storeName }}
                 </h1>
             </v-row>
             <v-row
@@ -20,10 +20,10 @@
                 justify="center"
             >
                 <h1 class="text-center font-italic subtitle-3 hidden-xs-only">
-                    Von Siggi Bannach
+                    Von {{ this.$store.state.storeInfo.merchant }}
                 </h1>
                 <h3 class="text-center font-italic subtitle-3 hidden-sm-and-up">
-                    Von Siggi Bannach
+                    Von {{ this.$store.state.storeInfo.merchant }}
                 </h3>
             </v-row>
         </v-container>
