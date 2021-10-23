@@ -39,7 +39,7 @@
         },
         methods: {
             goToCheckout() {
-                this.$router.push({ name: "checkout" })
+                this.$router.push({ name: "Checkout" })
             }
         },
         computed: {

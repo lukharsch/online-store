@@ -14,6 +14,8 @@
             <v-col
                 sm="4"
                 md="3"
+                order="first"
+                order-sm="last"
             >
                 <CheckoutBox/>
             </v-col>
