@@ -27,10 +27,22 @@ export default new Vuex.Store({
         },
         openedToday: state => {
             var dt = new Date();
-            var hm = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun"]
-            var day = hm[dt.getDay()]
-            return state.storeInfo.opening[day] != null ? state.storeInfo.opening[day] : ""
+            //var hm = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+            //var day = [dt.getDay()]
+            return state.storeInfo.opening[dt.getDay()] != "" ? state.storeInfo.opening[dt.getDay()] : ""
         },
+        openingHoursShifted: state => {
+            var temp = state.storeInfo.opening.slice(0);
+            var keys = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+            const firstElement = temp.shift();
+            temp.push(firstElement)
+            //const merged = keys.reduce((obj, key, index) => ({ ...obj, [key]: temp[index] }), {});
+            var mapDays = []
+            keys.forEach((element, i) => {
+                mapDays.push({"day": element, "hours": temp[i]})
+            });
+            return mapDays
+        }
         /*getMinPrice: state => {
             var temp = state.products.sort(function (a, b) {
                 return a.price - b.price

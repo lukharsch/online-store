@@ -40,26 +40,66 @@
                         <v-col 
                             class="py-0 mb-0"
                             cols="12"
-                            md="auto"
+                            md="6"
                             align-self="center"
                         >
-                            <p
-                                v-if="this.$store.getters.openedToday != ''"
-                                class="success--text mb-0 pb-0"
-                            >
-                                Heute geöffnet: {{ this.$store.getters.openedToday }}
-                            </p>
-                            <p
-                                v-else
-                                class="error--text mb-0 pb-0"
-                            >
-                                Heute geschlossen
-                            </p>
-                            <v-row justify="end">
+                            <v-row>
                                 <v-col
-                                    align-self="center"
+                                    cols="6"
+                                    md="12"
+                                    class="mt-2 pt-2 mb-1 pb-1 my-md-0 py-md-0"
                                 >
-                                    Weitere Öffnungszeiten
+                                    <p
+                                        v-if="this.$store.getters.openedToday != ''"
+                                        class="success--text mb-0 pb-0 float-left float-md-right"
+                                    >
+                                        Heute geöffnet: {{ this.$store.getters.openedToday }}
+                                    </p>
+                                    <p
+                                        v-else
+                                        class="error--text mb-0 pb-0 float-left float-md-right"
+                                    >
+                                        Heute geschlossen
+                                    </p>
+                                </v-col>
+                                <v-col
+                                    cols="6"
+                                    md="12"
+                                    align-self="center"
+                                    class="text-right text-sm-left mt-2 pt-2 mb-1 pb-1 my-md-0 py-md-0"
+                                >
+                                    <v-menu
+                                        rounded
+                                        offset-y
+                                    >
+                                        <template v-slot:activator="{ attrs, on }">
+                                            <p 
+                                                class="float-right"
+                                                v-bind="attrs"
+                                                v-on="on"
+                                            >
+                                                Weitere Öffnungszeiten <i class="fas fa-chevron-down"></i>
+                                            </p>
+                                        </template>
+
+                                        <v-list>
+                                            <v-list-item
+                                                v-for="(op, i) in this.$store.getters.openingHoursShifted"
+                                                :key="i"
+                                            >
+                                                <v-list-item-title
+                                                    v-if="op['hours'] != ''"
+                                                >
+                                                    {{ op["day"] }}: {{ op["hours"] }}
+                                                </v-list-item-title>
+                                                <v-list-item-title
+                                                    v-else
+                                                >
+                                                    {{ op["day"] }}: Geschlossen
+                                                </v-list-item-title>
+                                            </v-list-item>
+                                        </v-list>
+                                    </v-menu>
                                 </v-col>
                             </v-row>
                         </v-col>
